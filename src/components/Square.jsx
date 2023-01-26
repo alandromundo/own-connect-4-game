@@ -1,11 +1,10 @@
 import React from 'react'
 
 export function Square ({ children, isSelected, updateBoard, rowIndex, colIndex }) {
-  
-  const className = `square ${isSelected ? 'is-selected' : ''}`;
-  
+  const className = `square ${isSelected ? 'is-selected' : ''}`
+
   const handleClick = () => {
-    updateBoard(rowIndex, colIndex);
+    updateBoard(rowIndex, colIndex)
   }
 
   return (

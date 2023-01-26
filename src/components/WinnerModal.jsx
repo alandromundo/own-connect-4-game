@@ -1,12 +1,12 @@
 import React from 'react'
+import { Square } from './Square'
 
-function WinnerModal({ winner }) {
-
-  if(winner === null) return null
+function WinnerModal ({ winner, resetGame }) {
+  if (winner === null) return null
 
   return (
-      <section className='winner'>
-      <div className="text">
+    <section className='winner'>
+      <div className='text'>
         <h2>
           {winner === false ? 'Draw' : 'Won'}
         </h2>

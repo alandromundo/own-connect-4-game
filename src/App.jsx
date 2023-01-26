@@ -5,20 +5,19 @@ import { Square } from './components/Square'
 import Game from './components/Game'
 import WinnerModal from './components/WinnerModal'
 
-function App() {
-
+function App () {
   const [board, setBoard] = useState(Array(5).fill(0).map(row => new Array(7).fill(null)))
-  const [turn, setTurn] = useState(TURN[1]);
-  const [winner, setWinner] = useState();
+  const [turn, setTurn] = useState(TURN[1])
+  const [winner, setWinner] = useState()
 
-  function resetGame() {
+  function resetGame () {
     setBoard(Array(5).fill(0).map(row => new Array(7).fill(null)))
     setTurn(TURN[1])
-    setWinner(null);
+    setWinner(null)
   }
 
   return (
-    <main className="board">
+    <main className='board'>
       <h1>Connect 4!</h1>
       <button onClick={resetGame}>Start again</button>
       <Game
@@ -29,15 +28,18 @@ function App() {
         setTurn={setTurn}
         setWinner={setWinner}
       />
-      <section className="turn">
+      <section className='turn'>
         <Square isSelected={turn === TURN[1]}>
-          {TURN[1]}  
-        </Square>      
+          {TURN[1]}
+        </Square>
         <Square isSelected={turn === TURN[2]}>
-          {TURN[2]}  
-        </Square>      
+          {TURN[2]}
+        </Square>
       </section>
-      <WinnerModal winner={winner}/>
+      <WinnerModal
+        winner={winner}
+        resetGame={resetGame}
+      />
     </main>
   )
 }
