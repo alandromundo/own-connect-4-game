@@ -3,14 +3,13 @@ import { useState } from 'react'
 import { TURN } from './constants'
 import { Square } from './components/Square'
 import Game from './components/Game'
+import WinnerModal from './components/WinnerModal'
 
 function App() {
 
   const [board, setBoard] = useState(Array(5).fill(0).map(row => new Array(7).fill(null)))
   const [turn, setTurn] = useState(TURN[1]);
   const [winner, setWinner] = useState();
-
-  
 
   function resetGame() {
     setBoard(Array(5).fill(0).map(row => new Array(7).fill(null)))
@@ -38,25 +37,7 @@ function App() {
           {TURN[2]}  
         </Square>      
       </section>
-      {
-        winner && 
-        <section className='winner'>
-      <div className="text">
-        <h2>
-          {winner === false ? 'Draw' : 'Won'}
-        </h2>
-
-        <header className='win'>
-          {winner && <Square>{winner}</Square>}
-        </header>
-
-        <footer>
-          <button onClick={resetGame}>Start again</button>
-        </footer>
-
-      </div>
-    </section>
-      }
+      <WinnerModal winner={winner}/>
     </main>
   )
 }
